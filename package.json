@@ -1,0 +1,16 @@
+{
+  "name":"@manaty/retro-museum-play","version":"1.0.0","private":true,"type":"module",
+  "scripts":{"start":"node server.js","build:zx80":"node scripts/build-zx80.js"},
+  "engines":{"node":">=22"},
+  "dependencies":{
+    "@google-cloud/storage":"8.0.1",
+    "@manaty/retro-museum-sdk":"https://github.com/manaty/retro-museum-sdk/archive/b1cb0ce2a4ba7436dd8ccc25f1bd757990c4c914.tar.gz",
+    "@manaty/game-tanks":"https://github.com/manaty/game-tanks/archive/e19489ca3f9d448ddfbce3b97d8cdf7d3943d1fb.tar.gz",
+    "@manaty/game-uno":"https://github.com/manaty/game-uno/archive/cc664d0d7d9348066684b298536bdef48d9a5560.tar.gz",
+    "@manaty/game-kart":"https://github.com/manaty/game-kart/archive/95333ac760ac0c01a68f991f06835f14668e0beb.tar.gz",
+    "@manaty/game-monopoly":"https://github.com/manaty/game-monopoly/archive/a3099755ea517e2b81bc7d738b92a1cad0ed6c96.tar.gz",
+    "@manaty/game-werewolf":"https://github.com/manaty/game-werewolf/archive/8c26562a1d7bb44a5ea945c2b1202085a626e4be.tar.gz",
+    "@manaty/game-zx80":"https://github.com/manaty/game-zx80/archive/6c415babd5c82241a8b2945070b422b5f9b53814.tar.gz",
+    "esbuild":"0.28.2"
+  }
+}
