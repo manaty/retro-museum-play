@@ -1,24 +1,25 @@
 {
   "name": "@manaty/retro-museum-play",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "build:zx80": "node scripts/build-zx80.js"
+    "build:zx80": "node scripts/build-zx80.js",
+    "test": "node --test test/*.test.js"
   },
   "engines": {
     "node": ">=22"
   },
   "dependencies": {
     "@google-cloud/storage": "8.0.1",
-    "@manaty/retro-museum-sdk": "https://github.com/manaty/retro-museum-sdk/archive/65f499eccbbf2cd2f72f42e5edea8a4c62e2a0d0.tar.gz",
-    "@manaty/game-tanks": "https://github.com/manaty/game-tanks/archive/d5911ef96a7c400fc06eeb4848083510d3944176.tar.gz",
-    "@manaty/game-uno": "https://github.com/manaty/game-uno/archive/1784f3aa144a813b8e473aae8de09f350ed99620.tar.gz",
-    "@manaty/game-kart": "https://github.com/manaty/game-kart/archive/3976de7f95f6c73a826db4e3e312215f9474f1f6.tar.gz",
-    "@manaty/game-monopoly": "https://github.com/manaty/game-monopoly/archive/ae17b624798b9e28401a64891c66445c3d8ac433.tar.gz",
-    "@manaty/game-werewolf": "https://github.com/manaty/game-werewolf/archive/131803645e69d6dea724ee9e829cab45f38d8528.tar.gz",
-    "@manaty/game-zx80": "https://github.com/manaty/game-zx80/archive/331895724d01e7364be161bd055e7ae49cbc1cad.tar.gz",
+    "@manaty/retro-museum-sdk": "https://github.com/manaty/retro-museum-sdk/archive/23d04fc7bd49ec6d0d13c255c0a725622a8b9ad1.tar.gz",
+    "@manaty/game-tanks": "https://github.com/manaty/game-tanks/archive/aaf390a36b1fbc10653c5d1467a51500a21ad3e0.tar.gz",
+    "@manaty/game-uno": "https://github.com/manaty/game-uno/archive/68678deb6829b511e80ca9e279aceb8a7dcbde48.tar.gz",
+    "@manaty/game-kart": "https://github.com/manaty/game-kart/archive/be1bf2cc3053799824c524af8259e3146ff5a372.tar.gz",
+    "@manaty/game-monopoly": "https://github.com/manaty/game-monopoly/archive/87c15870722bb2b2092fab51a82b6c2886075f75.tar.gz",
+    "@manaty/game-werewolf": "https://github.com/manaty/game-werewolf/archive/f0b450053b24b7dea25d43ee7bd616e2619245fd.tar.gz",
+    "@manaty/game-zx80": "https://github.com/manaty/game-zx80/archive/ec15f37e47032ddfdd7ef9fe2edf3b910b10adf8.tar.gz",
     "esbuild": "0.28.2"
   }
 }

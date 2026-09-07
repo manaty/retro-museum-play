@@ -1,0 +1,16 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {createCatalogSync} from '../catalog.js';import {createHash} from 'node:crypto';
+const pack={manifest:{schemaVersion:1,id:'community-demo',version:'1.0.0',title:{en:'Demo'},description:{en:'Approved game'},author:'Demo',license:'MIT',languages:['en'],players:{min:1,max:2},durationMinutes:10,runtime:'quickjs-v1',entry:'dist/game.rmg.json',permissions:[]},licenseText:'MIT license fixture '.repeat(10),assets:{},view:'<!doctype html><html><body>Demo</body></html>',engine:'globalThis.RetroMuseumGame={create(){return {}}}'};
+const data=Buffer.from(JSON.stringify(pack)),sha=createHash('sha256').update(data).digest('hex'),approved={id:pack.manifest.id,manifest:pack.manifest,sha256:sha,reportId:'a'.repeat(32),publishedAt:'2026-09-07T12:00:00Z'};
+test('approved packages are pinned, deduplicated and withdrawn without touching existing rooms',async()=>{
+ const registered=[],removed=[],requests=[];let entries=[approved],available=true;
+ const sync=createCatalogSync({origin:'https://catalog.example',host:{registerGame:async d=>registered.push(d),removeGame:id=>removed.push(id)},report:()=>{},fetcher:async(url,options)=>{requests.push(url);assert.equal(options.redirect,'error');if(!available)throw Error('offline');return new Response(url.endsWith('/api/catalog')?JSON.stringify({schemaVersion:1,games:entries}):data);}});
+ await sync.refresh({force:true});assert.equal(registered.length,1);assert.equal(registered[0].hash,sha);await sync.refresh({force:true});assert.equal(registered.length,1);assert.equal(requests.filter(x=>x.includes('/packages/')).length,1);
+ available=false;await sync.refresh({force:true});assert.deepEqual(removed,[]);available=true;entries=[];await sync.refresh({force:true});assert.deepEqual(removed,['community-demo']);await sync.close();
+});
+test('pending, protected, native, oversized and corrupted entries cannot be installed',async()=>{
+ let entries=[{...approved,reportId:null},{...approved,id:'tanks'}],bytes=data;const errors=[];
+ const sync=createCatalogSync({origin:'https://catalog.example',host:{registerGame:()=>assert.fail('Invalid package installed'),removeGame:()=>{}},protectedIds:['tanks'],report:e=>errors.push(e),fetcher:async url=>new Response(url.endsWith('/api/catalog')?JSON.stringify({schemaVersion:1,games:entries}):bytes)});
+ await sync.refresh({force:true});assert.deepEqual(errors,[]);entries=[approved];bytes=Buffer.from('{}');await sync.refresh({force:true});assert.match(errors.pop(),/integrity mismatch/);
+ const native={...pack,manifest:{...pack.manifest,runtime:'native-v1'}};bytes=Buffer.from(JSON.stringify(native));entries=[{...approved,manifest:native.manifest,sha256:createHash('sha256').update(bytes).digest('hex')}];await sync.refresh({force:true});assert.match(errors.pop(),/Native engines/);await sync.close();
+ const bounded=createCatalogSync({origin:'https://catalog.example',host:{registerGame:()=>assert.fail()},maxBytes:1,report:e=>errors.push(e),fetcher:async url=>new Response(url.endsWith('/api/catalog')?JSON.stringify({schemaVersion:1,games:[approved]}):data)});await bounded.refresh({force:true});assert.match(errors.pop(),/capacity/);await bounded.close();
+});

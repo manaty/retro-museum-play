@@ -4,6 +4,7 @@ import {readFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {dirname,resolve} from 'node:path';
 import {createZX80Runtime} from '@manaty/game-zx80/engine';
+import {createCatalogSync} from './catalog.js';
 const games=['tanks','uno','kart','monopoly','werewolf','zx80'];
 const zxRoot=resolve(dirname(fileURLToPath(import.meta.resolve('@manaty/game-zx80/package'))),'..');
 const rom=await readFile(resolve(zxRoot,'.local/roms/zx80.rom'));
@@ -15,6 +16,9 @@ if(process.env.ROOM_BUCKET){const bucket=new Storage().bucket(process.env.ROOM_B
  async putPackage(hash,source){try{await bucket.file('packages/'+hash+'.json').save(source,{resumable:false,contentType:'application/json',preconditionOpts:{ifGenerationMatch:0}});}catch(error){if(error.code!==412)throw error;}},
  async getPackage(hash){if(!/^[a-f0-9]{64}$/.test(hash))throw Error('Invalid package hash');const [bytes]=await bucket.file('packages/'+hash+'.json').download();return bytes.toString('utf8');}
 };}
-const app=await createGameHost({definitions,store,publicOrigin:process.env.PUBLIC_ORIGIN,allowedOrigins:(process.env.ALLOWED_ORIGINS||'').split(',').filter(Boolean),maxRooms:Number(process.env.MAX_ROOMS)||32});
+let catalog;
+const app=await createGameHost({definitions,store,publicOrigin:process.env.PUBLIC_ORIGIN,allowedOrigins:(process.env.ALLOWED_ORIGINS||'').split(',').filter(Boolean),refreshGames:()=>catalog?.refresh(),maxRooms:Number(process.env.MAX_ROOMS)||32});
+if(process.env.CATALOG_ORIGIN)catalog=createCatalogSync({origin:process.env.CATALOG_ORIGIN,host:app,protectedIds:definitions.map(d=>d.pack.manifest.id)});
+await catalog?.refresh();const catalogTimer=setInterval(()=>catalog?.refresh(),60000);
 app.server.listen(Number(process.env.PORT)||8080,'0.0.0.0',()=>console.log('Manaty Play ready: '+games.join(', ')));
-for(const signal of ['SIGINT','SIGTERM'])process.on(signal,async()=>{await app.close();process.exit(0);});
+for(const signal of ['SIGINT','SIGTERM'])process.on(signal,async()=>{clearInterval(catalogTimer);await catalog?.close();await app.close();process.exit(0);});
