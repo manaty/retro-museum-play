@@ -15,6 +15,6 @@ if(process.env.ROOM_BUCKET){const bucket=new Storage().bucket(process.env.ROOM_B
  async putPackage(hash,source){try{await bucket.file('packages/'+hash+'.json').save(source,{resumable:false,contentType:'application/json',preconditionOpts:{ifGenerationMatch:0}});}catch(error){if(error.code!==412)throw error;}},
  async getPackage(hash){if(!/^[a-f0-9]{64}$/.test(hash))throw Error('Invalid package hash');const [bytes]=await bucket.file('packages/'+hash+'.json').download();return bytes.toString('utf8');}
 };}
-const app=await createGameHost({definitions,store,publicOrigin:process.env.PUBLIC_ORIGIN,maxRooms:Number(process.env.MAX_ROOMS)||32});
+const app=await createGameHost({definitions,store,publicOrigin:process.env.PUBLIC_ORIGIN,allowedOrigins:(process.env.ALLOWED_ORIGINS||'').split(',').filter(Boolean),maxRooms:Number(process.env.MAX_ROOMS)||32});
 app.server.listen(Number(process.env.PORT)||8080,'0.0.0.0',()=>console.log('Manaty Play ready: '+games.join(', ')));
 for(const signal of ['SIGINT','SIGTERM'])process.on(signal,async()=>{await app.close();process.exit(0);});
