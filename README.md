@@ -1,6 +1,6 @@
 # Manaty Play
 
-Default public room host for the six independently versioned Manaty game repositories: Tanks, UNO, Kart, Monopoly, Werewolf and ZX80. There is no binary puzzle. Each dependency is pinned to an immutable public commit; game implementation lives in its own repository.
+Default public room host for independently versioned Manaty game repositories, including Tanks, UNO, Kart, Monopoly, Werewolf, ZX80, Quiz, Marbble, Sketch and Chess. There is no binary puzzle. Each dependency is pinned to an immutable public commit; game implementation lives in its own repository.
 
 ```sh
 npm ci
@@ -25,3 +25,9 @@ Public rollout verified on 2026-09-08: host 1.2.0, Cloud Run revision `retro-mus
 Version 1.3.0 adds `/g/quizz` and approved questionnaire activities from the marketplace. Quiz supports ranking, elimination with continued practice, and cooperative voting, with configurable question count, duration and ordering. `QUIZ_PLAYER_CAPACITY` sets its host limit (default 128, accepted 1–1000); this is an admission setting, not a measured network capacity. Other games retain their existing limits. Quiz engines receive only their own questionnaire and send private answers only to the corresponding player.
 
 Host 1.4.0 includes Quiz 1.1.0 with indicative difficulty levels. Its organiser can set the minimum and maximum level; custom percentage mixtures are prepared in the marketplace or the museum administration. Banks may contain 1,000 questions (10 MB), with a session drawing 1–100. Existing rooms keep their pinned packages and saved question order.
+
+## Shared room expiry (1.5.0)
+
+After the last player controller disconnects, the server frees the room slot and disposes its game engine at 30 seconds. Displays do not hold a slot open. The saved game, participant credentials and pinned package can be resumed for ten minutes from that disconnect; reconnecting a controller requires a free slot. At ten minutes, the private checkpoint is deleted from the room bucket. Restarting does not renew an abandoned room’s deadline.
+
+The public health endpoint separates active `rooms`, dormant `savedRooms`, `connectedPlayers` and `playingRooms`. The shared 32-room limit counts active slots only. Dedicated paid rooms are planned separately; there is no paid bypass in this release.
