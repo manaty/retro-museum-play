@@ -1,6 +1,6 @@
 {
   "name": "@manaty/retro-museum-play",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -20,10 +20,10 @@
     "@manaty/game-uno": "https://github.com/manaty/game-uno/archive/c794f3e05a8ce842d0e0ec9f5e84d069f1bc5e73.tar.gz",
     "@manaty/game-werewolf": "https://github.com/manaty/game-werewolf/archive/99aa7d21000b6de269b44a28f5420b47e9d3dad0.tar.gz",
     "@manaty/game-zx80": "https://github.com/manaty/game-zx80/archive/d22ed4edf98c3f7d99a2232f10b76fcb594b4a79.tar.gz",
-    "@manaty/retro-museum-sdk": "https://github.com/manaty/retro-museum-sdk/archive/5ab9a0bca4fce65072deb9a99f21bfa634d7bd13.tar.gz",
+    "@manaty/retro-museum-sdk": "https://github.com/manaty/retro-museum-sdk/archive/39f0deca2c9e2fda284af55ef1bfb0264c313404.tar.gz",
     "esbuild": "0.28.2",
     "@manaty/game-marbble": "https://github.com/manaty/game-marbble/archive/0caf757d3306b36aa1d844e2f4b141104f50a27f.tar.gz",
     "@manaty/game-sketch": "https://github.com/manaty/game-sketch/archive/fab9abf96e753d21ba80a5a4c319b4ae423c9edf.tar.gz",
-    "@manaty/game-chess": "https://github.com/manaty/game-chess/archive/0ddca11530c044bbe9faf0a2a0de67898a045036.tar.gz"
+    "@manaty/game-chess": "https://github.com/manaty/game-chess/archive/b3e149d69b16a6cb007ca9bcecbe84ad8791680e.tar.gz"
   }
 }
