@@ -1,6 +1,6 @@
 {
   "name": "@manaty/retro-museum-play",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -23,7 +23,7 @@
     "@manaty/retro-museum-sdk": "https://github.com/manaty/retro-museum-sdk/archive/5ab9a0bca4fce65072deb9a99f21bfa634d7bd13.tar.gz",
     "esbuild": "0.28.2",
     "@manaty/game-marbble": "https://github.com/manaty/game-marbble/archive/0caf757d3306b36aa1d844e2f4b141104f50a27f.tar.gz",
-    "@manaty/game-sketch": "https://github.com/manaty/game-sketch/archive/f08cc0da3e54df35832789a6064f36554d693b12.tar.gz",
-    "@manaty/game-chess": "https://github.com/manaty/game-chess/archive/cba389702de04099e8d9826fc829502ef9456596.tar.gz"
+    "@manaty/game-sketch": "https://github.com/manaty/game-sketch/archive/e80632f140843835ad6917190bafcb59159113d5.tar.gz",
+    "@manaty/game-chess": "https://github.com/manaty/game-chess/archive/65fcb8f94b742ccc5743c0b4aa69e272e1100837.tar.gz"
   }
 }
