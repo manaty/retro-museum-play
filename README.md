@@ -17,3 +17,7 @@ Deploy one room-owner instance with CPU available between requests. Independent 
 Players can use **Invite a player** on their phone to open the system share sheet. Browsers without native sharing offer a copyable link. The invitation opens the same room with the new player's own identity; it contains no host or player credentials.
 
 The shared host and validation toolkit live in [retro-museum-sdk](https://github.com/manaty/retro-museum-sdk). Set `CATALOG_ORIGIN` to the trusted HTTPS marketplace origin to make approved community games available at `/g/GAME_ID` automatically. The host verifies the published package hash and manifest and executes community engines in QuickJS. It never builds submitted repositories. Catalog updates are checked every minute and on requests for an unknown game. Withdrawn games stop accepting new rooms; existing rooms retain their pinned package.
+
+Players with a single device can enable **Screen + controls**, or open their invitation with `?view=combined`. The public display and private controller stay separate: opening the personal display does not create a second player or expose private cards or roles. Turning the preview off keeps the controller connected.
+
+Public rollout verified on 2026-09-08: host 1.2.0, Cloud Run revision `retro-museum-games-00004-zwg`, serving all traffic. A new Tanks room was created through the public page; its joined player rendered both the public game screen and private controls from `play.retro-museum.net`.
