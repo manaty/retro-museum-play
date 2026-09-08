@@ -22,6 +22,8 @@
     "@manaty/game-zx80": "https://github.com/manaty/game-zx80/archive/d22ed4edf98c3f7d99a2232f10b76fcb594b4a79.tar.gz",
     "@manaty/retro-museum-sdk": "https://github.com/manaty/retro-museum-sdk/archive/11ff30d8e0931d16407f0cf5b06f7bff9ec22850.tar.gz",
     "esbuild": "0.28.2",
-    "@manaty/game-marbble": "https://github.com/manaty/game-marbble/archive/0caf757d3306b36aa1d844e2f4b141104f50a27f.tar.gz"
+    "@manaty/game-marbble": "https://github.com/manaty/game-marbble/archive/0caf757d3306b36aa1d844e2f4b141104f50a27f.tar.gz",
+    "@manaty/game-sketch": "https://github.com/manaty/game-sketch/archive/f08cc0da3e54df35832789a6064f36554d693b12.tar.gz",
+    "@manaty/game-chess": "https://github.com/manaty/game-chess/archive/cba389702de04099e8d9826fc829502ef9456596.tar.gz"
   }
 }

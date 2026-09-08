@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {dirname,resolve} from 'node:path';
 import {createZX80Runtime} from '@manaty/game-zx80/engine';
 import {createCatalogSync} from './catalog.js';
-const games=['tanks','uno','kart','monopoly','werewolf','zx80','quizz','marbble'];
+const games=['tanks','uno','kart','monopoly','werewolf','zx80','quizz','marbble','sketch','chess'];
 const zxRoot=resolve(dirname(fileURLToPath(import.meta.resolve('@manaty/game-zx80/package'))),'..');
 const rom=await readFile(resolve(zxRoot,'.local/roms/zx80.rom'));
 const definitions=await Promise.all(games.map(game=>loadGame(fileURLToPath(import.meta.resolve('@manaty/game-'+game+'/package')),game==='zx80'?{createEngine:(...args)=>createZX80Runtime(rom,...args)}:{})));
