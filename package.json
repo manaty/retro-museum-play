@@ -15,7 +15,7 @@
     "@google-cloud/storage": "8.0.1",
     "@manaty/game-kart": "https://github.com/manaty/game-kart/archive/ad86bb425320879b54e620f7e9bc7a4334b970fc.tar.gz",
     "@manaty/game-monopoly": "https://github.com/manaty/game-monopoly/archive/6bf6d055db357482916b667bff723670e4aac183.tar.gz",
-    "@manaty/game-quizz": "https://github.com/manaty/game-quizz/archive/b73519163cda107d9c8b3cf9843471319747c6fd.tar.gz",
+    "@manaty/game-quizz": "https://github.com/manaty/game-quizz/archive/a360ac2890a31595160efc045c7488228795424f.tar.gz",
     "@manaty/game-tanks": "https://github.com/manaty/game-tanks/archive/e9dd7605a3ccbaae3a48da98ec0a82411c8fb408.tar.gz",
     "@manaty/game-uno": "https://github.com/manaty/game-uno/archive/c794f3e05a8ce842d0e0ec9f5e84d069f1bc5e73.tar.gz",
     "@manaty/game-werewolf": "https://github.com/manaty/game-werewolf/archive/99aa7d21000b6de269b44a28f5420b47e9d3dad0.tar.gz",
