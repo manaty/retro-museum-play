@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {dirname,resolve} from 'node:path';
 import {createZX80Runtime} from '@manaty/game-zx80/engine';
 import {createCatalogSync} from './catalog.js';
-const games=['tanks','uno','kart','monopoly','werewolf','zx80'];
+const games=['tanks','uno','kart','monopoly','werewolf','zx80','quizz'];
 const zxRoot=resolve(dirname(fileURLToPath(import.meta.resolve('@manaty/game-zx80/package'))),'..');
 const rom=await readFile(resolve(zxRoot,'.local/roms/zx80.rom'));
 const definitions=await Promise.all(games.map(game=>loadGame(fileURLToPath(import.meta.resolve('@manaty/game-'+game+'/package')),game==='zx80'?{createEngine:(...args)=>createZX80Runtime(rom,...args)}:{})));
@@ -17,7 +17,7 @@ if(process.env.ROOM_BUCKET){const bucket=new Storage().bucket(process.env.ROOM_B
  async getPackage(hash){if(!/^[a-f0-9]{64}$/.test(hash))throw Error('Invalid package hash');const [bytes]=await bucket.file('packages/'+hash+'.json').download();return bytes.toString('utf8');}
 };}
 let catalog;
-const app=await createGameHost({definitions,store,publicOrigin:process.env.PUBLIC_ORIGIN,allowedOrigins:(process.env.ALLOWED_ORIGINS||'').split(',').filter(Boolean),refreshGames:()=>catalog?.refresh(),maxRooms:Number(process.env.MAX_ROOMS)||32});
+const app=await createGameHost({definitions,store,publicOrigin:process.env.PUBLIC_ORIGIN,allowedOrigins:(process.env.ALLOWED_ORIGINS||'').split(',').filter(Boolean),refreshGames:()=>catalog?.refresh(),maxRooms:Number(process.env.MAX_ROOMS)||32,playerCapacity:Number(process.env.QUIZ_PLAYER_CAPACITY)||128});
 if(process.env.CATALOG_ORIGIN)catalog=createCatalogSync({origin:process.env.CATALOG_ORIGIN,host:app,protectedIds:definitions.map(d=>d.pack.manifest.id)});
 await catalog?.refresh();const catalogTimer=setInterval(()=>catalog?.refresh(),60000);
 app.server.listen(Number(process.env.PORT)||8080,'0.0.0.0',()=>console.log('Manaty Play ready: '+games.join(', ')));
