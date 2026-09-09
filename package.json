@@ -1,6 +1,6 @@
 {
   "name": "@manaty/retro-museum-play",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,19 +13,19 @@
   },
   "dependencies": {
     "@google-cloud/storage": "8.0.1",
+    "@manaty/game-chess": "https://github.com/manaty/game-chess/archive/b3e149d69b16a6cb007ca9bcecbe84ad8791680e.tar.gz",
     "@manaty/game-kart": "https://github.com/manaty/game-kart/archive/ad86bb425320879b54e620f7e9bc7a4334b970fc.tar.gz",
+    "@manaty/game-marbble": "https://github.com/manaty/game-marbble/archive/0caf757d3306b36aa1d844e2f4b141104f50a27f.tar.gz",
     "@manaty/game-monopoly": "https://github.com/manaty/game-monopoly/archive/6bf6d055db357482916b667bff723670e4aac183.tar.gz",
+    "@manaty/game-poker": "https://github.com/manaty/game-poker/archive/78f3b420bf162af892efe8ba2a3671c5b7c7c4b9.tar.gz",
     "@manaty/game-quizz": "https://github.com/manaty/game-quizz/archive/dd6c058631c96e6c4525b7802caaf713049dc981.tar.gz",
+    "@manaty/game-sketch": "https://github.com/manaty/game-sketch/archive/fab9abf96e753d21ba80a5a4c319b4ae423c9edf.tar.gz",
     "@manaty/game-tanks": "https://github.com/manaty/game-tanks/archive/e9dd7605a3ccbaae3a48da98ec0a82411c8fb408.tar.gz",
+    "@manaty/game-tongits": "https://github.com/manaty/game-tongits/archive/ce94fd036d8c7ead21ee7b0b27839c4d7a52dcfc.tar.gz",
     "@manaty/game-uno": "https://github.com/manaty/game-uno/archive/c794f3e05a8ce842d0e0ec9f5e84d069f1bc5e73.tar.gz",
     "@manaty/game-werewolf": "https://github.com/manaty/game-werewolf/archive/99aa7d21000b6de269b44a28f5420b47e9d3dad0.tar.gz",
     "@manaty/game-zx80": "https://github.com/manaty/game-zx80/archive/d22ed4edf98c3f7d99a2232f10b76fcb594b4a79.tar.gz",
-    "@manaty/retro-museum-sdk": "https://github.com/manaty/retro-museum-sdk/archive/ae5e0ae824ae005945732e88a7ac29bf74cba9a3.tar.gz",
-    "esbuild": "0.28.2",
-    "@manaty/game-marbble": "https://github.com/manaty/game-marbble/archive/0caf757d3306b36aa1d844e2f4b141104f50a27f.tar.gz",
-    "@manaty/game-sketch": "https://github.com/manaty/game-sketch/archive/fab9abf96e753d21ba80a5a4c319b4ae423c9edf.tar.gz",
-    "@manaty/game-chess": "https://github.com/manaty/game-chess/archive/b3e149d69b16a6cb007ca9bcecbe84ad8791680e.tar.gz",
-    "@manaty/game-poker": "https://github.com/manaty/game-poker/archive/78f3b420bf162af892efe8ba2a3671c5b7c7c4b9.tar.gz",
-    "@manaty/game-tongits": "https://github.com/manaty/game-tongits/archive/ce94fd036d8c7ead21ee7b0b27839c4d7a52dcfc.tar.gz"
+    "@manaty/retro-museum-sdk": "https://github.com/manaty/retro-museum-sdk/archive/15b791a0b7fe48985690ea8dde4b326d496da570.tar.gz",
+    "esbuild": "0.28.2"
   }
 }
