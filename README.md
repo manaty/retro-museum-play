@@ -31,3 +31,14 @@ Host 1.4.0 includes Quiz 1.1.0 with indicative difficulty levels. Its organiser 
 After the last player controller disconnects, the server frees the room slot and disposes its game engine at 30 seconds. Displays do not hold a slot open. The saved game, participant credentials and pinned package can be resumed for ten minutes from that disconnect; reconnecting a controller requires a free slot. At ten minutes, the private checkpoint is deleted from the room bucket. Restarting does not renew an abandoned room’s deadline.
 
 The public health endpoint separates active `rooms`, dormant `savedRooms`, `connectedPlayers` and `playingRooms`. The shared 32-room limit counts active slots only. Dedicated paid rooms are planned separately; there is no paid bypass in this release.
+
+## Direct Tara quizzes
+
+Open Tara's **Play together**, choose a practice selection and press **Play in
+Retro Museum**. `/tara` receives the versioned compressed link, previews the
+questions and creates an unlisted room with the selected rules. No file download,
+upload, catalog submission or relabeling of Tara's CC BY-SA 4.0 content occurs.
+The route is provided by the pinned `game-quizz/tara-transfer` module; SDK 1.11
+pins the private package with its room instead of registering a public game.
+The host's existing origin, room capacity and creation limits apply. Active rooms
+retain their hash-bound package after restart.
