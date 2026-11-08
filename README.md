@@ -47,6 +47,16 @@ Version 1.3.0 adds `/g/quizz` and approved questionnaire activities from the mar
 
 Host 1.4.0 includes Quiz 1.1.0 with indicative difficulty levels. Its organiser can set the minimum and maximum level; custom percentage mixtures are prepared in the marketplace or the museum administration. Banks may contain 1,000 questions (10 MB), with a session drawing 1–100. Existing rooms keep their pinned packages and saved question order.
 
+## Installable app and offline play (1.12.0)
+
+`play.retro-museum.net` can be installed as an app (Android/desktop install prompt, or Share › Add to Home Screen on iPhone). Its catalogue has a **Play without Internet** panel: download the games once while online, then switch on **Offline games (Wi-Fi hotspot)** and create a game. The game then runs in the organiser's browser, not on this server.
+
+1. The organiser turns on their phone's Wi-Fi hotspot (any shared Wi-Fi also works) and creates an offline game.
+2. Each player joins that Wi-Fi, opens the app and taps **Join an offline game**, or scans the organiser's QR code with the camera.
+3. The player's phone shows a reply code; the organiser's camera reads it and the player joins over a direct WebRTC link.
+
+Players only need to have opened the app once while online: games they have not downloaded are sent by the organiser. ZX80 uses a native server engine and is not available offline. Details and limits are in the SDK README (SDK 1.13).
+
 ## Shared room expiry (1.5.0)
 
 After the last authenticated player or organiser disconnects, the server frees the room slot and disposes its game engine at 30 seconds. An authenticated organiser’s shared board keeps the room available, including while paused; public displays do not hold a slot open. The saved game, participant credentials and pinned package can be resumed for ten minutes from that disconnect; reconnecting a player or organiser requires a free slot. At ten minutes, the private checkpoint is deleted from the room bucket. Restarting does not renew an abandoned room’s deadline.

@@ -1,6 +1,6 @@
 {
   "name": "@manaty/retro-museum-play",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -26,7 +26,7 @@
     "@manaty/game-uno": "https://github.com/manaty/game-uno/archive/ef31ef286f7e82c6fe9186a338cd999903f5bd98.tar.gz",
     "@manaty/game-werewolf": "https://github.com/manaty/game-werewolf/archive/99aa7d21000b6de269b44a28f5420b47e9d3dad0.tar.gz",
     "@manaty/game-zx80": "https://github.com/manaty/game-zx80/archive/d22ed4edf98c3f7d99a2232f10b76fcb594b4a79.tar.gz",
-    "@manaty/retro-museum-sdk": "https://github.com/manaty/retro-museum-sdk/archive/fe1dad4bcfdb0b07840e55267d19cc947227c710.tar.gz",
+    "@manaty/retro-museum-sdk": "https://github.com/manaty/retro-museum-sdk/archive/ecb903540f10a1d54cc40ff8c7bd84a118364abe.tar.gz",
     "esbuild": "0.28.2"
   }
 }
